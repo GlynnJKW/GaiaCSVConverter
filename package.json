@@ -1,0 +1,12 @@
+{
+  "name": "gaiacsvtograph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "GlynnJKW",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^2.0.8"
+  }
+}
