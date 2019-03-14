@@ -20,22 +20,19 @@ let parser = parse({
 parser.on('readable', function(){
     let record;
     while (star = parser.read()){
-        if(count > 0){
-            writeStream.write('\n');
-        }
         ++count;
         if(count % 100000 == 0){
             console.log(count + " done");
         }
         // console.log(star);
-        let d = 1000.0 / star.parallax;
+        let d = (1000.0 / star.parallax) * 1000.0;
         let decrad = (Math.PI * star.dec) / 180.0;
         let rarad = (Math.PI * star.ra) / 180.0;
         let x = d * Math.cos(rarad) * Math.cos(decrad);
         let y = d * Math.sin(decrad);
         let z = d * Math.sin(rarad) * Math.cos(decrad);
-        let r = g = b = 1.0;
-        writeStream.write(`${x} ${y} ${z} ${r} ${g} ${b}`);
+        let r = g = b = 256;
+        writeStream.write(`${x} ${y} ${z} 256 256 256\n`);
     }
 });
 
